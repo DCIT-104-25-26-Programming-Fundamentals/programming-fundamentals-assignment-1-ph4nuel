@@ -59,4 +59,34 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+def print_matrix(matrix):
+    for row in matrix:
+        for val in row:
+            print(f"{val:4d}", end="")
+        print()
+def transpose_matrix(matrix):
+    rows = len(matrix)
+    cols = len(matrix[0])    
+    transposed = []
+    for c in range(cols):
+        new_row = []
+        for r in range(rows):
+            new_row.append(matrix[r][c])
+        transposed.append(new_row)
+    return transposed
 
+M = int(input("Enter number of rows: "))
+N = int(input("Enter number of columns: "))
+
+matrix = []
+for i in range(M):
+    row_input = input(f"Enter row {i + 1}: ")
+    row = [int(x) for x in row_input.split()]
+    matrix.append(row)
+
+print("\nOriginal Matrix:")
+print_matrix(matrix)
+
+print("\nTransposed Matrix:")
+transposed = transpose_matrix(matrix)
+print_matrix(transposed)
