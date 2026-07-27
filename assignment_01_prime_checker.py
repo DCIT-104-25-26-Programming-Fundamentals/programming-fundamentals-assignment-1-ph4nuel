@@ -34,4 +34,17 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+import math
+def primeCalculator(number):
+  if number <2:
+    return False
+  for i in range(2,math.isqrt(number)+1):
+    if number % i ==0:
+      return False 
+  return True
+  if __name__ == "__main__":
+   userInput =int(input("Enter a number: "))
+    if primeCalculator(userInput):
+      print(f"{userInput} is a prime number)
+        else print(f"{userInput} is NOT a prime number.)
 
