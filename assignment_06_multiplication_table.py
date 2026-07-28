@@ -54,4 +54,27 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+def singleTimetable(num):
+    for i in range(1, 13):
+        print(f"{num:2d}  x  {i:2d}  =  {num * i:3d}")
+
+def multipleTables(N):
+    for num in range(1, N + 1):
+        singleTimetable(num)
+        if num < N:
+            print("---------------------------")
+
+num_a = int(input("What timetable do you want? "))
+if num_a <= 0:
+    print("Error: You must enter a positive integer.")
+else:
+    singleTimetable(num_a)
+
+print("\n" + "=" * 30 + "\n")
+
+num_b = int(input("Enter N for Part B (Tables 1 to N): "))
+if num_b <= 0:
+    print("Error: You must enter a positive integer.")
+else:
+    multipleTables(num_b)
 
