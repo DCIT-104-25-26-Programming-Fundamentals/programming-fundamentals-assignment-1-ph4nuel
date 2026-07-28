@@ -67,4 +67,106 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+def add(a, b):
+    return a + b
+
+
+def subtract(a, b):
+    return a - b
+
+
+def multiply(a, b):
+    return a * b
+
+
+def divide(a, b):
+    if b == 0:
+        return "Error: Cannot divide by zero."
+    return round(a / b, 2)
+
+
+def modulus(a, b):
+    if b == 0:
+        return "Error: Cannot perform modulus by zero."
+    return a % b
+
+
+def power(a, b):
+    return a ** b
+
+
+def display_menu():
+    print("\n============================")
+    print("      SIMPLE CALCULATOR")
+    print("============================")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Modulus")
+    print("6. Exponentiation")
+    print("7. Quit")
+
+
+def get_numbers():
+    num1 = float(input("Enter first number : "))
+    num2 = float(input("Enter second number: "))
+    return num1, num2
+
+
+def format_number(val):
+    if isinstance(val, (int, float)) and val.is_integer():
+        return int(val)
+    return val
+
+
+def main():
+    while True:
+        display_menu()
+        choice = input("Select an operation (1-7): ").strip()
+
+        if choice == "7":
+            print("Goodbye!")
+            break
+
+        if choice in ["1", "2", "3", "4", "5", "6"]:
+            try:
+                num1, num2 = get_numbers()
+            except ValueError:
+                print("Error: Invalid numeric input.")
+                continue
+
+            n1_fmt = format_number(num1)
+            n2_fmt = format_number(num2)
+
+            if choice == "1":
+                res = add(num1, num2)
+                print(f"Result: {n1_fmt} + {n2_fmt} = {format_number(res)}")
+            elif choice == "2":
+                res = subtract(num1, num2)
+                print(f"Result: {n1_fmt} - {n2_fmt} = {format_number(res)}")
+            elif choice == "3":
+                res = multiply(num1, num2)
+                print(f"Result: {n1_fmt} * {n2_fmt} = {format_number(res)}")
+            elif choice == "4":
+                res = divide(num1, num2)
+                if isinstance(res, str):
+                    print(res)
+                else:
+                    print(f"Result: {n1_fmt} / {n2_fmt} = {res}")
+            elif choice == "5":
+                res = modulus(num1, num2)
+                if isinstance(res, str):
+                    print(res)
+                else:
+                    print(f"Result: {n1_fmt} % {n2_fmt} = {format_number(res)}")
+            elif choice == "6":
+                res = power(num1, num2)
+                print(f"Result: {n1_fmt} ** {n2_fmt} = {format_number(res)}")
+        else:
+            print("Invalid choice! Please select an operation from 1 to 7.")
+
+
+if __name__ == "__main__":
+    main()
 
